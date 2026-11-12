@@ -1,9 +1,20 @@
-﻿namespace US_27_search_and_filter.Repository;
+﻿using US_27_search_and_filter.Interface;
+using US_27_search_and_filter.Models;
 
-public class BookingRepository
+namespace US_27_search_and_filter.Repository;
+
+public class BookingRepository : IBookingRepository
 {
-}
-public interface IBookingRepository
-{
-    void Add()
+    private readonly List<Booking> _bookingsList = [];
+    public void AddBooking(Booking booking)
+    {
+        if (booking == null)
+            throw new ArgumentNullException(nameof(booking), "You cannot add an empty booking!");
+
+        _bookingsList.Add(booking);
+    }
+    public List<Booking> GetAllBookings()
+    {
+        return _bookingsList.ToList();
+    }
 }
