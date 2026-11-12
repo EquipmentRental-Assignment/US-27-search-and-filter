@@ -1,6 +1,6 @@
 ﻿using US_27_search_and_filter.Models;
 
-namespace US_27_search_and_filter.Repository;
+namespace US_27_search_and_filter.Interface;
 
 public interface ICustomerRepository
 {
