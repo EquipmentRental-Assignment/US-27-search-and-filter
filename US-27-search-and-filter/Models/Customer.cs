@@ -2,11 +2,12 @@
 
 namespace US_27_search_and_filter.Models;
 
-public abstract class Customer( string email, string phoneNumber, bool isCompany)
+public abstract class Customer(string name, string email, string phoneNumber, bool isCompany)
 {
     public Guid CustomerId { get; set; } = Guid.NewGuid();
-    public string Email { get; set; } = email;
-    public string PhoneNumber { get; set; } = phoneNumber;
+    public string CustomerName { get; set; } = ValidateCustomer(name);
+    public string Email { get; set; } = ValidateEmail(email);
+    public string PhoneNumber { get; set; } = ValidateCustomer(phoneNumber);
     public bool IsCompany { get; set; } = isCompany;
 
     private static string ValidateCustomer(string input)
@@ -18,11 +19,11 @@ public abstract class Customer( string email, string phoneNumber, bool isCompany
     }
     private static string ValidateEmail(string input)
     {
-        ValidateCustomer(input);
+        var validatedInput = ValidateCustomer(input);
 
-        if (!MailAddress.TryCreate(input, out var _))
+        if (!MailAddress.TryCreate(validatedInput, out var _))
             throw new InvalidOperationException("You need to enter a valid email!"); 
 
-        return null;
+        return validatedInput;
     }
 }
