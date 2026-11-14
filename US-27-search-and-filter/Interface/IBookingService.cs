@@ -5,5 +5,5 @@ namespace US_27_search_and_filter.Interface;
 
 public interface IBookingService
 {
-    List<Booking> SearchBookings(string searchTerm, BookingStatus? status = null);
+    List<Booking> SearchBookings(string searchTerm, BookingFilter filter = BookingFilter.All, BookingStatus? status = null);
 }
