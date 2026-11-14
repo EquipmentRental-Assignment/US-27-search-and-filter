@@ -1,4 +1,3 @@
-# US-27-search-and-filter
 # US-70 – Söka och filtrera bokningar
 
 ## Beskrivning
